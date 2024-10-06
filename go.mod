@@ -1,10 +1,9 @@
 module github.com/ramit-mitra/url-shortener-golang
 
-go 1.22.2
+go 1.23.2
 
 require (
 	github.com/jackc/pgx/v4 v4.18.3
-	github.com/joho/godotenv v1.5.1
 	github.com/robfig/cron/v3 v3.0.1
 )
 
