@@ -1,0 +1,28 @@
+services:
+  service__postgres:
+    image: arm64v8/postgres:latest
+    restart: unless-stopped
+    shm_size: 512mb
+    cpus: "0.5"
+    mem_limit: "512M"
+    environment:
+      POSTGRES_PASSWORD: phee4wahvuapeafi5DieruJ
+
+  app__url_shortener:
+    build:
+      context: .
+    environment:
+      PORT: 1234
+      DATABASE_URL: postgres://postgres:phee4wahvuapeafi5DieruJ@service__postgres:5432/postgres?sslmode=disable
+      APP_URL: l.ramit.io
+    cpus: "0.25"
+    mem_limit: "256M"
+    restart: unless-stopped
+    depends_on:
+      - service__postgres
+    ports:
+      - "1234:1234"
+    develop:
+      watch:
+        - path: .
+          action: rebuild
