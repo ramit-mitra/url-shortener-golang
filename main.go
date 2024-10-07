@@ -10,6 +10,7 @@ import (
 	"os"
 	"time"
 
+	profiler "github.com/blackfireio/go-continuous-profiling"
 	"github.com/jackc/pgx/v4"
 	"github.com/robfig/cron/v3"
 )
@@ -201,6 +202,15 @@ func cleanExpiredLinks() {
 }
 
 func main() {
+	// start blackfire profiler
+	err := profiler.Start(
+		profiler.WithAppName("url-shortener-golang"),
+	)
+	if err != nil {
+		panic("😭 Error while starting Profiler")
+	}
+	defer profiler.Stop()
+
 	// Connect to PostgreSQL
 	connectToDB()
 	defer dbConn.Close(context.Background())
