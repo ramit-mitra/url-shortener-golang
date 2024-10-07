@@ -203,10 +203,10 @@ func cleanExpiredLinks() {
 
 func main() {
 	// start blackfire profiler
-	err := profiler.Start(
+	p_err := profiler.Start(
 		profiler.WithAppName("url-shortener-golang"),
 	)
-	if err != nil {
+	if p_err != nil {
 		panic("😭 Error while starting Profiler")
 	}
 	defer profiler.Stop()
