@@ -43,6 +43,7 @@ applications:
 services:
   postgresql:
     type: postgresql:16
+    container_profile: BALANCED
 
 routes:
   "https://l.{default}/":
