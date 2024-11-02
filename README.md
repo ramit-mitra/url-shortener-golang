@@ -34,6 +34,8 @@ Open <http://localhost:1234/> with your browser to see the result. Prefer using 
 
 ## Deploy in production
 
+Deploy to [upsun.com](https://upsun.com/). Configuration files are present in `.upsun` directory.
+
 ## Suggestions and feedback
 
 Got ideas 💡 about a `feature` or an `enhancement`? Feel free to [open a PR](https://github.com/ramit-mitra/url-shortener-golang/pulls).
