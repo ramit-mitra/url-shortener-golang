@@ -43,7 +43,7 @@ applications:
 services:
   postgresql:
     type: postgresql:16
-    container_profile: BALANCED
+    container_profile: HIGH_MEMORY
 
 routes:
   "https://l.{default}/":
