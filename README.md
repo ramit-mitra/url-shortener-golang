@@ -8,7 +8,7 @@ This is my `weekend hobby project` which is a `headless` URL shortener service.
 
 - [Go](https://go.dev/)
 - [Upsun](https://upsun.com/)
-- [Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/), used in local for development
 
 ## What it does?
 
@@ -20,14 +20,14 @@ Generate a `short link` for a given URL.
 | ----------- | ------------- | ------------------------------------------------------------------ |
 | GET         | `/`           | default endpoint                                                   |
 | POST        | `/`           | create a `short link`                                              |
-| GET         | `/:code`      | send `short code` and get redirected to the actual URL (if exists) |
+| GET         | `/short/:code`      | send `short code` and get redirected to the actual URL (if exists) |
 
 ## Development
 
 To start the development server run:
 
 ```bash
-docker compose watch
+docker compose up --build --watch
 ```
 
 Open <http://localhost:1234/> with your browser to see the result. Prefer using `curl` like a true geek.
