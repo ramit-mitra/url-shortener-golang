@@ -50,8 +50,11 @@ func connectToDB() {
 	var err error
 
 	connStr := os.Getenv("DATABASE_URL")
-	dbConn, err = pgx.Connect(context.Background(), connStr)
+	if connStr == "" {
+		log.Fatal("❌ DATABASE_URL variable is not set")
+	}
 
+	dbConn, err = pgx.Connect(context.Background(), connStr)
 	if err != nil {
 		log.Fatalf("😭 Unable to connect to database: %v\n", err)
 	}
@@ -206,15 +209,15 @@ func redirectHandler(w http.ResponseWriter, r *http.Request) {
 	// get the URL from the database
 	url, singleUse, expiresAt, err := getURLFromDB(shortcode)
 	if err != nil || url == "" {
-		http.Error(w, "URL not found", http.StatusNotFound)
+		http.Error(w, "No URL found for this shortcode", http.StatusNotFound)
 		return
 	}
 
 	// check if the link has expired
 	if time.Now().After(expiresAt) {
-		// Delete expired link
+		// delete expired link
 		deleteURLFromDB(shortcode)
-		http.Error(w, "URL has expired", http.StatusGone)
+		http.Error(w, "URL for this shortcode has expired", http.StatusGone)
 		return
 	}
 

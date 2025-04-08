@@ -1,6 +1,6 @@
 services:
   service__postgres:
-    image: arm64v8/postgres:latest
+    image: arm64v8/postgres:17
     restart: unless-stopped
     shm_size: 512mb
     cpus: "0.5"

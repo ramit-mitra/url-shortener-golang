@@ -1,4 +1,6 @@
-# Complete list of all available properties: https://docs.upsun.com/create-apps/app-reference.html
+# Complete list of all available properties:
+# https://docs.upsun.com/create-apps/app-reference.html
+
 applications:
   url-shortener-golang:
     source:
@@ -42,7 +44,7 @@ applications:
 
 services:
   postgresql:
-    type: postgresql:16
+    type: postgresql:17
     container_profile: HIGH_MEMORY
 
 routes:
